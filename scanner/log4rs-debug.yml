@@ -1,0 +1,14 @@
+appenders:
+  stdout:
+    kind: console
+    encoder:
+      pattern: "{d(%Y-%m-%d %H:%M:%S:%s)} [CI/CD] [{h({l})}] {m}{n}"
+root:
+  level: debug
+  appenders:
+    - stdout
+
+# these can get really chatty during debug logging so keep them on `info` even if the root log level changes
+loggers:
+  hyper:
+    level: info
