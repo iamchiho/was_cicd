@@ -21,5 +21,5 @@ jobs:
       - name: Run WAS
         run: |
           docker pull tenable/was-scanner:latest
-          docker run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=${ACCESS_KEY} -e SECRET_KEY=${SECRET_KEY} -e WAS_CONFIG_FILE=./scanner/tenable_was.conf -e WAS_LOGGING_CONFIG_FILE=./scanner/log4rs-debug.yml --link petstore tenable/was-scanner:latest || true
+          docker run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=421f7447add90a41aab23e2d9317056727c5c1d3dedb45a6d62f4306f90f52a3 -e SECRET_KEY=82c9f1b593fee1a58bda35fdbe0e3f9ca39cd811ee42d64299b7ba7cc416866c -e WAS_CONFIG_FILE=./scanner/tenable_was.conf -e WAS_LOGGING_CONFIG_FILE=./scanner/log4rs-debug.yml --link petstore tenable/was-scanner:latest || true
           ls $(pwd)
