@@ -18,7 +18,8 @@ jobs:
       - name: Run WAS
         run: |
           podman pull tenable/was-scanner:latest
-          podman run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=${ACCESS_KEY} -e SECRET_KEY=${SECRET_KEY} -e WAS_CONFIG_FILE=./scanner/tenable_was.conf -e WAS_LOGGING_CONFIG_FILE=./scanner/log4rs-debug.yml --pod petstore tenable/was-scanner:latest || true
+          podman pod create -n test
+          podman run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=${ACCESS_KEY} -e SECRET_KEY=${SECRET_KEY} -e WAS_CONFIG_FILE=./scanner/tenable_was.conf -e WAS_LOGGING_CONFIG_FILE=./scanner/log4rs-debug.yml --pod test petstore tenable/was-scanner:latest || true
         env:
           ACCESS_KEY: ${{secrets.ACCESS_KEY}}
           SECRET_KEY: ${{secrets.SECRET_KEY}}
