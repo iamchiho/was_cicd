@@ -19,7 +19,7 @@ jobs:
         run: |
           podman pull tenable/was-scanner:latest
           podman network create cicdwebappscan
-          podman run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=${ACCESS_KEY} -e SECRET_KEY=${SECRET_KEY} --network connect cicdwebappscan petstore tenable/was-scanner:latest || true
+          podman run -v $(pwd):/scanner -t -e WAS_MODE=cicd -e ACCESS_KEY=${ACCESS_KEY} -e SECRET_KEY=${SECRET_KEY} --network connect petstore tenable/was-scanner:latest || true
           ls $(pwd)
         env:
           ACCESS_KEY: ${{secrets.ACCESS_KEY}}
